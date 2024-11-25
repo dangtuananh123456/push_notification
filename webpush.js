@@ -1,12 +1,12 @@
 const webpush = require("web-push");
 
-// let result = webpush.generateVAPIDKeys();
-// console.log({ result });
+let result = webpush.generateVAPIDKeys();
+console.log({ result });
 // VAPID keys should only be generated only once.
 const vapidKeys = {
   publicKey:
-    "BH2688ONzVhyjjB0uuPeAwXY6ynE-AK8_SvD9bc8HqeZBmSWQwT233V-kXhFu6fADWMa6wK2QJhuxRyX0HK5cog",
-  privateKey: "YL4WzHQj6DK0qFysUUkFjPYJE6W2PhWm78RE2xRiiD8",
+    "BLd5PIMceWWRzNUF4heJ2-F5gX9yhegZIVuQnesBVaZnLabafWlKAODMw-WG97rZkfah0FKi6jc0AegPd553DUI",
+  privateKey: "znjjUYQiYbxlvrF6x_sP1dmLE2ZlLeDOI6gSqNgX30k",
 };
 
 webpush.setVapidDetails(
@@ -17,25 +17,22 @@ webpush.setVapidDetails(
 
 // This is the same output of calling JSON.stringify on a PushSubscription
 const pushSubscription = {
-  endpoint:
-    "https://fcm.googleapis.com/fcm/send/cdcL_l0dxgM:APA91bFPSXJhtkHhZFJfs6Q5OxYR2lPHE_uxP7eIVCcRFHnNkABtt9-A3cV5sMGW2HzggF90zklD1Ai89HAwb_IJMWpaa6CywHrMeNfGmp9NBlXD73wFDakJa8Qenqn5O9ISbXLXQyYs",
-  expirationTime: null,
-  keys: {
-    p256dh:
-      "BGc6yCWxlZ_umymloVxpoa2MgqSe6bwcfQtWQGOc3zFZJp42Ui74gAZnc4jcCAIqebodat5VwyowsP4fbijCNzE",
-    auth: "Bxj4DxFPm0ljmncgTd5hyg",
-  },
-};
+  "endpoint": "https://fcm.googleapis.com/fcm/send/cv9jeyfOA0s:APA91bEP_z9AM0u0mDaLjUmuFB5RGN6h4McXrU7I0hOz5NojBq0C_mMqsJP6ua8z7RGQSyS0aycr7mQepOEL7KAMvng3TT-91tJKKHv5vq9EgNotMONbJvpyi7_w7ir3-vohWX-hV3aX",
+  "expirationTime": null,
+  "keys": {
+    "p256dh": "BIZBZ5ylMJBWiFQ6MnVilmui7iRbM7-zJ4AEy9i1SQXt_EWXph0oED0MAGiztFTLU6T7fdXBqHDZTcUt5K0I1EE",
+    "auth": "yW1M2c1wG8xthQ6u56lytw"
+  }
+}
 
-// const fix = {
-//   endpoint:
-//     "https://updates.push.services.mozilla.com/wpush/v2/gAAAAABnPwcVrzUCOW629inYQcTtmz_uDOFlPwDIm9EZsp7UD79AhGFokVCnwJagL6sG7EIK9TX59DJjtS4wU2setLYK96pKXycmkJwyjeKfIWBcSGrpsFAj3aZM4yw2Q5WpiBD8T8pN-qbRQT-K_9sDSHUOUwsXjG1zDZQCsL4A43UCFNTQKic",
-//   expirationTime: null,
-//   keys: {
-//     auth: "gICk3jKeqDm51znREXCRgg",
-//     p256dh:
-//       "BFeA_YbmCyJ5zj9X0DFBxFiqqianUfdYz5Bw9BDKOqUedzXiP5XTZnLxPQkh40hAXPt6gFO_Kk4wVF24AN06evA",
-//   },
-// };
+
+const fix = {
+  "endpoint": "https://fcm.googleapis.com/fcm/send/dnkeliUP2o8:APA91bHoO-cnXSPhtx6Dh33_rZH9OrkdEfCar65chbsCTZ3K2tkqb4S19WxcFPfNOetacdl262dSaw99vxJlN2hD2t6hmlTeklWpTwTYNA1cLqKDxLmmPFX_Eo3ritw3YoZ43RLxhYdM",
+  "expirationTime": null,
+  "keys": {
+    "p256dh": "BPtmUg77eM-OW779A2mr0GAJTI0WmUdmnC6Z3wOUkN3JAEMpkwIInB1zlavyDHmnfrFIyZzBm0K0DNquPmENqwM",
+    "auth": "8_9aoDUdIDWPP3oOvWr8wA"
+  }
+};
 
 webpush.sendNotification(pushSubscription, "Your Push Payload Text");
