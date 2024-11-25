@@ -5,8 +5,8 @@ const webpush = require("web-push");
 // VAPID keys should only be generated only once.
 const vapidKeys = {
   publicKey:
-    "BLGT3uloHwB_V6ozWLHJuux87VLnH5mlkgWNNqS1ZMNanGISbJWiMYkxYNopmC5Sv-aWljcSrjflaGpl6PMRTAY",
-  privateKey: "8vzv0g3MH37mOPkP-jf4bMdnr2TncmGYOSoJtInJtbU",
+    "BH2688ONzVhyjjB0uuPeAwXY6ynE-AK8_SvD9bc8HqeZBmSWQwT233V-kXhFu6fADWMa6wK2QJhuxRyX0HK5cog",
+  privateKey: "YL4WzHQj6DK0qFysUUkFjPYJE6W2PhWm78RE2xRiiD8",
 };
 
 webpush.setVapidDetails(
@@ -27,15 +27,15 @@ const pushSubscription = {
   },
 };
 
-const fix = {
-  endpoint:
-    "https://updates.push.services.mozilla.com/wpush/v2/gAAAAABnPwcVrzUCOW629inYQcTtmz_uDOFlPwDIm9EZsp7UD79AhGFokVCnwJagL6sG7EIK9TX59DJjtS4wU2setLYK96pKXycmkJwyjeKfIWBcSGrpsFAj3aZM4yw2Q5WpiBD8T8pN-qbRQT-K_9sDSHUOUwsXjG1zDZQCsL4A43UCFNTQKic",
-  expirationTime: null,
-  keys: {
-    auth: "gICk3jKeqDm51znREXCRgg",
-    p256dh:
-      "BFeA_YbmCyJ5zj9X0DFBxFiqqianUfdYz5Bw9BDKOqUedzXiP5XTZnLxPQkh40hAXPt6gFO_Kk4wVF24AN06evA",
-  },
-};
+// const fix = {
+//   endpoint:
+//     "https://updates.push.services.mozilla.com/wpush/v2/gAAAAABnPwcVrzUCOW629inYQcTtmz_uDOFlPwDIm9EZsp7UD79AhGFokVCnwJagL6sG7EIK9TX59DJjtS4wU2setLYK96pKXycmkJwyjeKfIWBcSGrpsFAj3aZM4yw2Q5WpiBD8T8pN-qbRQT-K_9sDSHUOUwsXjG1zDZQCsL4A43UCFNTQKic",
+//   expirationTime: null,
+//   keys: {
+//     auth: "gICk3jKeqDm51znREXCRgg",
+//     p256dh:
+//       "BFeA_YbmCyJ5zj9X0DFBxFiqqianUfdYz5Bw9BDKOqUedzXiP5XTZnLxPQkh40hAXPt6gFO_Kk4wVF24AN06evA",
+//   },
+// };
 
 webpush.sendNotification(pushSubscription, "Your Push Payload Text");
