@@ -1,7 +1,7 @@
 const webpush = require("web-push");
 
-let result = webpush.generateVAPIDKeys();
-console.log({ result });
+// let result = webpush.generateVAPIDKeys();
+// console.log({ result });
 // VAPID keys should only be generated only once.
 const vapidKeys = {
   publicKey:
@@ -17,14 +17,13 @@ webpush.setVapidDetails(
 
 // This is the same output of calling JSON.stringify on a PushSubscription
 const pushSubscription = {
-  "endpoint": "https://fcm.googleapis.com/fcm/send/cv9jeyfOA0s:APA91bEP_z9AM0u0mDaLjUmuFB5RGN6h4McXrU7I0hOz5NojBq0C_mMqsJP6ua8z7RGQSyS0aycr7mQepOEL7KAMvng3TT-91tJKKHv5vq9EgNotMONbJvpyi7_w7ir3-vohWX-hV3aX",
+  "endpoint": "https://fcm.googleapis.com/fcm/send/fqQlAv6RfXQ:APA91bEpMeJJTTBXosiZOzLvG3lfvJeazam1kZr5K-rZt2QOk3zOxIUeBTTGWk_nljnAyFauMzwPYiApoqfw1CLm8-UPJIMbo4aipOjF-CoJARgh9Q1avp2hmfjJGbkVGjMV6RBaZGzK",
   "expirationTime": null,
   "keys": {
-    "p256dh": "BIZBZ5ylMJBWiFQ6MnVilmui7iRbM7-zJ4AEy9i1SQXt_EWXph0oED0MAGiztFTLU6T7fdXBqHDZTcUt5K0I1EE",
-    "auth": "yW1M2c1wG8xthQ6u56lytw"
+    "p256dh": "BP3yL2xQZX_QNyEMorYT1QyXfQZSgEjBrVY2QcNG21quUqznjDivyfwDGZBK44BKYUd8SWT0F8A7dTeknWFCA_Y",
+    "auth": "uAiWLKRWoSJfyyhvBC8-4A"
   }
 }
-
 
 const fix = {
   "endpoint": "https://fcm.googleapis.com/fcm/send/dnkeliUP2o8:APA91bHoO-cnXSPhtx6Dh33_rZH9OrkdEfCar65chbsCTZ3K2tkqb4S19WxcFPfNOetacdl262dSaw99vxJlN2hD2t6hmlTeklWpTwTYNA1cLqKDxLmmPFX_Eo3ritw3YoZ43RLxhYdM",
