@@ -7,37 +7,91 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <!-- Thêm vào phần <head> -->
   <link rel="manifest" href="/manifest.json" />
-  <link rel="apple-touch-icon"
-    href="https://fcm.googleapis.com/fcm/send/fqQlAv6RfXQ:APA91bEpMeJJTTBXosiZOzLvG3lfvJeazam1kZr5K-rZt2QOk3zOxIUeBTTGWk_nljnAyFauMzwPYiApoqfw1CLm8-UPJIMbo4aipOjF-CoJARgh9Q1avp2hmfjJGbkVGjMV6RBaZGzK">
+  <link rel="apple-touch-icon" href="https://example.com/apple-touch-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="MyPWA">
-
-  <title>Document</title>
+  <title>Push Notification</title>
 </head>
 
 <body>
   <button onclick="subscribe()">Subscribe</button>
   <div id="content"></div>
+
   <script>
-    async function subscribe() {
-      let sw = await navigator.serviceWorker.ready;
-      let push = await sw.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey:
-          'BLd5PIMceWWRzNUF4heJ2-F5gX9yhegZIVuQnesBVaZnLabafWlKAODMw-WG97rZkfah0FKi6jc0AegPd553DUI'
-      });
-      document.getElementById('content').innerText = JSON.stringify(push, null, 2);
-      console.log(JSON.stringify(push));
+    const PUBLIC_KEY = 'BMGGpAwp9T7Aw8J5oXsq4Ls0zw_kVwgFgkQ9w23ytvlrq9PcQ1o1hhN9kShZ5weyyllesO2rgIcgVbKGkV6Xf4w';
+
+    // Hàm chuyển đổi VAPID public key sang Base64-URL
+    function urlBase64ToUint8Array(base64String) {
+      const padding = '='.repeat((4 - base64String.length % 4) % 4);
+      const base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/');
+      const rawData = window.atob(base64);
+      const outputArray = new Uint8Array(rawData.length);
+      for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+      }
+      return outputArray;
     }
 
-    if ('serviceWorker' in navigator) {
-      addEventListener('load', async () => {
-        let sw = await navigator.serviceWorker.register('./sw.js');
-        console.log(JSON.stringify(sw));
+    // Kiểm tra và yêu cầu quyền hiển thị thông báo
+    async function checkNotificationPermission() {
+      if (Notification.permission === 'granted') {
+        console.log('Permission already granted.');
+        return true;
+      } else if (Notification.permission === 'default') {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          console.log('Permission granted.');
+          return true;
+        } else {
+          console.error('Permission denied.');
+          return false;
+        }
+      } else {
+        console.error('Permission denied earlier.');
+        return false;
+      }
+    }
 
-        console.log(sw);
+    // Hàm đăng ký Push Subscription
+    async function subscribe() {
+      const hasPermission = await checkNotificationPermission();
+      if (!hasPermission) {
+        document.getElementById('content').innerText = 'Notification permission denied.';
+        return;
+      }
+
+      if ('serviceWorker' in navigator) {
+        const sw = await navigator.serviceWorker.ready;
+        try {
+          const pushSubscription = await sw.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array(PUBLIC_KEY),
+          });
+          console.log('Push Subscription:', JSON.stringify(pushSubscription, null, 2));
+          document.getElementById('content').innerText = JSON.stringify(pushSubscription, null, 2);
+        } catch (error) {
+          console.error('Failed to subscribe:', error.message);
+        }
+      } else {
+        console.error('Service Worker is not supported in this browser.');
+      }
+    }
+
+    // Đăng ký Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', async () => {
+        try {
+          const sw = await navigator.serviceWorker.register('./sw.js');
+          console.log('Service Worker registered:', sw);
+        } catch (error) {
+          console.error('Service Worker registration failed:', error.message);
+        }
       });
+    } else {
+      console.error('Service Worker is not supported in this browser.');
     }
   </script>
 </body>
