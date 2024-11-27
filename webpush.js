@@ -18,13 +18,23 @@ webpush.setVapidDetails(
 // This is the same output of calling JSON.stringify on a PushSubscription
 const pushSubscription =
 {
-  "endpoint": "https://fcm.googleapis.com/fcm/send/fznRzBbmY_o:APA91bHeGIeWUEeHruj-EQp3iYxy1bv39NPXtBDtsVtBfipoX9RWG0SLgyZQaR-i78aVdhk4H__jEfs8wVa6Q92fXH5fJUTho2WWtXFP-wR3VzWz_z65qYfz-BMAWDqoNgQu7MkZu0gb",
+  "endpoint": "https://fcm.googleapis.com/fcm/send/c4UScEXnyiU:APA91bEOxh5L9Zl0pbq37PF3dzWpbHQPI7N3F8az6qU8AH4pIkJtczUYDdYBQ4QZEnUEB9t7cW03JFKaALNSx_0d9ucqOypevTmDmfLb_AD6uQPNw1jtIf_k14ZRekFuldHiqCZegGtd",
   "expirationTime": null,
   "keys": {
-    "p256dh": "BGr5rpnoB84MFBFFlFOZNwbU-HRvpIAekcjGMu9uEX2r_CIQFHnzqoUnhINK48JknYPH5iYOcJ5ein46j-pg39k",
-    "auth": "oriBIILjpbkK8HoLTDflKA"
+    "p256dh": "BL65nFuG5dczq-tLVaRiz5Pp_0MGg0dPYU7dD96igO7od0RWWO0rmAmiYFmJ4s5Ub6jGr5LAY8pof4-rYPYIWdc",
+    "auth": "b2m2mUkOWzzyQCQc2gD-9A"
   }
 }
+
+
+// {
+//   "endpoint": "https://fcm.googleapis.com/fcm/send/fznRzBbmY_o:APA91bHeGIeWUEeHruj-EQp3iYxy1bv39NPXtBDtsVtBfipoX9RWG0SLgyZQaR-i78aVdhk4H__jEfs8wVa6Q92fXH5fJUTho2WWtXFP-wR3VzWz_z65qYfz-BMAWDqoNgQu7MkZu0gb",
+//   "expirationTime": null,
+//   "keys": {
+//     "p256dh": "BGr5rpnoB84MFBFFlFOZNwbU-HRvpIAekcjGMu9uEX2r_CIQFHnzqoUnhINK48JknYPH5iYOcJ5ein46j-pg39k",
+//     "auth": "oriBIILjpbkK8HoLTDflKA"
+//   }
+// }
 
 
 // {

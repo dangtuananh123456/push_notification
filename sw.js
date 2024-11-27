@@ -1,18 +1,18 @@
 const title = 'Actions Notification';
 
 const options = {
-  body: 'How are you doing? )',
+  body: 'Vui lòng hoàn tất giao việc và chuyển Phiếu phân công công việc tổ sang trạng thái "Chờ duyệt" trước 15h hôm nay để đảm bảo tiến độ công việc.',
   image: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?cs=srgb&dl=pexels-kellie-churchman-371878-1001682.jpg&fm=jpg',
   icon: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?cs=srgb&dl=pexels-kellie-churchman-371878-1001682.jpg&fm=jpg',
   badge: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?cs=srgb&dl=pexels-kellie-churchman-371878-1001682.jpg&fm=jpg',
-  actions: [
-    {
-      action: 'reply',
-      type: 'text',
-      title: 'Reply',
-      icon: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?cs=srgb&dl=pexels-kellie-churchman-371878-1001682.jpg&fm=jpg',
-    }
-  ],
+  // actions: [
+  //   {
+  //     action: 'reply',
+  //     type: 'text',
+  //     title: 'Reply',
+  //     icon: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?cs=srgb&dl=pexels-kellie-churchman-371878-1001682.jpg&fm=jpg',
+  //   }
+  // ],
 };
 self.addEventListener('push', () => {
   self.registration.showNotification(title, options);
