@@ -26,5 +26,4 @@ self.addEventListener("notificationclick", event => {
 
 self.addEventListener("reply", event => {
   console.log({eventReply: event})
-
 })
