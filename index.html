@@ -15,11 +15,11 @@
 </head>
 
 <body>
-  <button onclick="subscribe()">Subscribe</button>
+  <!-- <button onclick="subscribe()">Subscribe</button> -->
   <div id="content"></div>
 
   <script>
-    const PUBLIC_KEY = 'BIXDQnaDM1iuI5IH29lygsSwoXB19HxgB-BvUf-Rngvckl1jOAhH-anJQA7HM665ow8C0TjL8Rcp6wYc31tM8hk';
+    const PUBLIC_KEY = 'BI_kWaB5BtNwFJpD0yVbFJdtMttO6APiHLQSe4cknr8ERtStfzpoFpvRfBSz3ZNKqnGZ1EjnhdQIw86L3IDhKsg';
 
     // Hàm chuyển đổi VAPID public key sang Base64-URL
     function urlBase64ToUint8Array(base64String) {
@@ -93,6 +93,10 @@
     } else {
       console.error('Service Worker is not supported in this browser.');
     }
+    // Tự động chạy subscribe khi tải trang
+    window.addEventListener('load', async () => {
+      await subscribe();
+    });
   </script>
 </body>
 
